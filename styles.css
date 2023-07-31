@@ -47,25 +47,8 @@ body::before {
     object-fit: cover;
 }
 
-
-/* 链接样式 */
-.sidebar a {
-    display: block;
-    color: #fff; /* 将链接文本的字体颜色更改为白色 */
-    font-size: 18px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    transition: color 0.3s ease; /* 添加过渡效果 */
-}
-
-/* 链接悬停样式 */
-.sidebar a:hover {
-    color: #ff6b6b; /* 链接悬停时的字体颜色，可以根据喜好更改为其他颜色 */
-}
-
 .card{
     max-width: 600px;
-    height: 400px;
     padding: 20px;
     background-color: #333;
     color: #fff;
@@ -77,4 +60,38 @@ body::before {
     background: rgba(0, 0, 0, .5);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+}
+
+/* 文章列表样式 */
+.articles {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.articles h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.articles ul {
+    list-style: none;
+    padding: 0;
+}
+
+.articles li {
+    margin-bottom: 15px; /* 调整文章之间的间距为 15px */
+}
+
+.articles a.random-link {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #ff6b6b); /* 初始渐变色 */
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.articles a:hover {
+    transform: scale(1.05);
 }

@@ -1,0 +1,150 @@
+/* 设置页面的基本样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #333;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* 定义滚动条的宽度和颜色 */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #333;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 8px;
+}
+
+/* 设置背景渐变色样式 */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #1b1b1b, #ff6b6b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 文章内容样式 */
+.article-content {
+    max-width: 800px;
+    margin: 2000px auto 30px auto;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    background: rgba(0, 0, 0, .5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.article-content h1 {
+    color: #ff6b6b;
+    margin-bottom: 10px;
+}
+
+.article-content .date {
+    color: #bbb;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.article-content p {
+    text-align: left;
+    line-height: 1.6;
+}
+
+.article-content a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #007bff, #ff6b6b); /* 初始渐变色 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 链接悬停效果 */
+.articles a.random-link {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #007bff, #ff6b6b); /* 初始渐变色 */
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.articles a.random-link:hover {
+    transform: scale(1.05);
+}
+
+/* 左上角关于按钮样式 */
+.about-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.about-btn a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.about-btn a:hover {
+    background-color: #444;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.code_public{
+    text-align: left;
+}

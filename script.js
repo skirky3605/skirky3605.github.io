@@ -1,16 +1,36 @@
-// script.js
+// 生成随机颜色，确保两种颜色的差异明显
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color1, color2;
+    do {
+        color1 = '#';
+        color2 = '#';
+        for (let i = 0; i < 6; i++) {
+            color1 += letters[Math.floor(Math.random() * 16)];
+            color2 += letters[Math.floor(Math.random() * 16)];
+        }
+    } while (Math.abs(parseInt(color1, 16) - parseInt(color2, 16)) < 0x333333); // 确保两种颜色的差异明显
 
-document.addEventListener("DOMContentLoaded", function() {
-  // 获取头像元素
-  const avatar = document.getElementById("avatar");
+    return [color1, color2];
+}
 
-  // 设置头像的初始位置（遮住 ID）
-  avatar.style.left = "50%";
-  avatar.style.transform = "translateX(-50%)";
+// 应用随机渐变颜色
+function applyRandomGradient() {
+    const links = document.querySelectorAll('.articles a.random-link');
+    links.forEach(link => {
+        const [randomColor1, randomColor2] = getRandomColor();
+        const gradient = `linear-gradient(135deg, ${randomColor1}, ${randomColor2})`;
 
-  // 等待一段时间后，添加动画
-  setTimeout(function() {
-    avatar.style.transition = "left 1s ease-out";
-    avatar.style.left = "25%"; // 向左移动到25%的位置
-  }, 0); // 等待1秒后开始动画，这个时间可以根据需要调整
+        link.style.background = gradient;
+    });
+}
+
+// 页面加载完毕后生成并应用随机渐变颜色
+window.addEventListener('load', () => {
+    applyRandomGradient();
+});
+
+// 当窗口大小改变时重新生成并应用随机渐变颜色（可选）
+window.addEventListener('resize', () => {
+    applyRandomGradient();
 });
