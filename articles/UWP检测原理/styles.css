@@ -148,3 +148,39 @@ body::-webkit-scrollbar-thumb {
 .code_public{
     text-align: left;
 }
+
+@media (max-width: 768px) {
+    /* 在这里修改手机设备的样式 */
+  
+    /* 示例：缩小标题在较小屏幕上的字体大小 */
+    .article-content h1 {
+      font-size: 24px;
+    }
+  
+    .article-content .date {
+      font-size: 12px;
+    }
+  
+    .article-content p {
+      font-size: 14px;
+    }
+  
+    /* 示例：调整较小屏幕上的内边距和外边距，以获得更好的间距 */
+    .article-content {
+      width: 300px;
+      margin: 2700px auto 10px auto;
+      padding: 10px;
+    }
+
+    .spyxx_img {
+        width: 300px;
+    }
+  
+    /* 示例：调整“关于”按钮的大小 */
+    .about-btn {
+      position: relative;
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+    }
+  }
