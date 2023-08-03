@@ -64,6 +64,7 @@ body::-webkit-scrollbar-thumb {
     color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    word-wrap: break-word;
     text-align: center;
     position: relative;
     background: rgba(0, 0, 0, .5);
@@ -171,6 +172,7 @@ body::-webkit-scrollbar-thumb {
   
     /* 示例：调整较小屏幕上的内边距和外边距，以获得更好的间距 */
     .article-content {
+      word-wrap: break-word;
       width: 300px;
       margin: 3050px 5px 10px auto;
       padding: 50px;
