@@ -36,7 +36,7 @@
 			<pre><code class="code_public">
 private delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
 
-DllImport("user32.dll")]
+[DllImport("user32.dll")]
 private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
 [DllImport("user32.dll")]
