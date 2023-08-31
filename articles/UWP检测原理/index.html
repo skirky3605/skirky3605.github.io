@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>UWP检测原理</title>
 	<!-- 添加您的网站样式表链接 -->
 	<link rel="stylesheet" href="styles.css">
@@ -32,80 +32,80 @@
 		<p class="date">发布日期：2023年7月31日</p>
 		<p>
 			想要判断一个正在运行的程序是否是UWP程序并不难。<br/>
-			UWP程序有一个最基本的特征,也是UWP程序与Win32程序底层上的差别,UWP程序的类名是"Windows.UI.Core.CoreWindow",而Win32程序就不一样了,千奇百怪,依靠这个特征,我们就可以辨别出一个程序是UWP还是Win32,Spy++(Visual Studio自带的工具)可以查看进程信息,可以用Spy++查看进程的类名判断这个程序是UWP还是Win32。<br/><img src="./images/Spyxx_screenhost.png"/><br/>但是Spy++工具并不是很好用,它的UI在现在看来有些落后了,而且当你想要判断一个程序是否是UWP程序,Spy++会列出所有进程,包括一些后台进程,所以我写了个WPF程序(在ChatGPT的帮助下,我承认它确实帮了我亿点点😂),这个程序以及源码我会在文章最后给出。<br/>下面我来详细的讲讲这个程序的工作原理:<br/>首先,需要获取全部活动程序的列表,我们需要检索所有的窗口,然后再判断窗口是否显示,只需要使用"user32.dll"中提供的"EnumWindows"和"IsWindowVisible"即可,具体的代码是:
+			UWP程序有一个最基本的特征,也是UWP程序与Win32程序底层上的差别,UWP程序的类名是"Windows.UI.Core.CoreWindow",而Win32程序就不一样了,千奇百怪,依靠这个特征,我们就可以辨别出一个程序是UWP还是Win32,Spy++(Visual Studio自带的工具)可以查看进程信息,可以用Spy++查看进程的类名判断这个程序是UWP还是Win32。<br/><img class="spyxx_img" src="./images/Spyxx_screenhost.png"/><br/>但是Spy++工具并不是很好用,它的UI在现在看来有些落后了,而且当你想要判断一个程序是否是UWP程序,Spy++会列出所有进程,包括一些后台进程,所以我写了个WPF程序(在ChatGPT的帮助下,我承认它确实帮了我亿点点😂),这个程序以及源码我会在文章最后给出。<br/>下面我来详细的讲讲这个程序的工作原理:<br/>首先,需要获取全部活动程序的列表,我们需要检索所有的窗口,然后再判断窗口是否显示,只需要使用"user32.dll"中提供的"EnumWindows"和"IsWindowVisible"即可,具体的代码是:
 			<pre><code class="code_public">
-			private delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
+private delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
 
-			DllImport("user32.dll")]
-			private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+[DllImport("user32.dll")]
+private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
-			[DllImport("user32.dll")]
-			private static extern bool IsWindowVisible(IntPtr hwnd);
+[DllImport("user32.dll")]
+private static extern bool IsWindowVisible(IntPtr hwnd);
 			</code></pre><br/>
 			然后只需要调用即可
 			<br/><pre><code class="code_public">
-			private List<IntPtr> GetOpenWindowHandles()
-			{
-				List<IntPtr> windowHandles = new List<IntPtr>();
-				EnumWindowsProc callback = (hwnd, lParam) =>
-				{
-					if (IsWindowVisible(hwnd))
-					{
-						windowHandles.Add(hwnd);
-					}
-					return true;
-				};
+private List<IntPtr> GetOpenWindowHandles()
+{
+	List<IntPtr> windowHandles = new List<IntPtr>();
+	EnumWindowsProc callback = (hwnd, lParam) =>
+	{
+		if (IsWindowVisible(hwnd))
+		{
+			windowHandles.Add(hwnd);
+		}
+		return true;
+	};
 
-				EnumWindows(callback, IntPtr.Zero);
-				return windowHandles;
-			}
+	EnumWindows(callback, IntPtr.Zero);
+	return windowHandles;
+}
 			</code></pre><br/>
 			这个方法会返回一个句柄列表,并且已经筛选掉了没有窗口的进程,然后获取标题和类名以及图标的代码就很简单了
 			<br/><pre><code class="code_public">
-			[DllImport("user32.dll")]
-			private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+[DllImport("user32.dll")]
+private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-			[DllImport("user32.dll", CharSet = CharSet.Unicode)]
-			private static extern int GetWindowText(IntPtr hwnd, StringBuilder text, int count);
+[DllImport("user32.dll", CharSet = CharSet.Unicode)]
+private static extern int GetWindowText(IntPtr hwnd, StringBuilder text, int count);
 
-			[DllImport("user32.dll", CharSet = CharSet.Unicode)]
-			private static extern int GetClassName(IntPtr hwnd, StringBuilder text, int count);
+[DllImport("user32.dll", CharSet = CharSet.Unicode)]
+private static extern int GetClassName(IntPtr hwnd, StringBuilder text, int count);
 
-			private string GetWindowTitle(IntPtr hwnd)
-			{
-				const int nChars = 256;
-				StringBuilder sb = new StringBuilder(nChars);
-				if (GetWindowText(hwnd, sb, nChars) > 0)
-				{
-					return sb.ToString();
-				}
-				return string.Empty;
-			}
+private string GetWindowTitle(IntPtr hwnd)
+{
+	const int nChars = 256;
+	StringBuilder sb = new StringBuilder(nChars);
+	if (GetWindowText(hwnd, sb, nChars) > 0)
+	{
+		return sb.ToString();
+	}
+	return string.Empty;
+}
 
-			private string GetWindowClassName(IntPtr hwnd)
-			{
-				const int nChars = 256;
-				StringBuilder sb = new StringBuilder(nChars);
-				if (GetClassName(hwnd, sb, nChars) > 0)
-				{
-					return sb.ToString();
-				}
-				return "未知类";
-			}
+private string GetWindowClassName(IntPtr hwnd)
+{
+	const int nChars = 256;
+	StringBuilder sb = new StringBuilder(nChars);
+	if (GetClassName(hwnd, sb, nChars) > 0)
+	{
+		return sb.ToString();
+	}
+	return "未知类";
+}
 
-			private BitmapSource GetWindowIcon(IntPtr hwnd)
-			{
-				IntPtr hIcon = SendMessage(hwnd, 0x007F, IntPtr.Zero, IntPtr.Zero);
-				if (hIcon != IntPtr.Zero)
-				{
-					// 获取32x32像素的图标
-					IntPtr hIconSmall = SendMessage(hwnd, 0x007F, new IntPtr(1), IntPtr.Zero);
-					return Imaging.CreateBitmapSourceFromHIcon(hIconSmall != IntPtr.Zero ? hIconSmall : hIcon,
-						Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-				}
+private BitmapSource GetWindowIcon(IntPtr hwnd)
+{
+	IntPtr hIcon = SendMessage(hwnd, 0x007F, IntPtr.Zero, IntPtr.Zero);
+	if (hIcon != IntPtr.Zero)
+	{
+		// 获取32x32像素的图标
+		IntPtr hIconSmall = SendMessage(hwnd, 0x007F, new IntPtr(1), IntPtr.Zero);
+		return Imaging.CreateBitmapSourceFromHIcon(hIconSmall != IntPtr.Zero ? hIconSmall : hIcon,
+			Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+	}
 
-				return null;
-			}
+	return null;
+}
 			</code></pre><br/>
 			<p>
 			核心的代码就是这些了。<br/>
