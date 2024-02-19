@@ -8,7 +8,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: #888 #333;
@@ -57,8 +56,8 @@ body::-webkit-scrollbar-thumb {
 
 /* 文章内容样式 */
 .article-content {
-    max-width: 800px;
-    margin: 2000px auto 30px auto;
+    max-width: 900px;
+    margin: 30px auto 30px auto;
     padding: 20px;
     background-color: #333;
     color: #fff;
