@@ -116,6 +116,7 @@ body::-webkit-scrollbar-thumb {
 
 /* 左上角关于按钮样式 */
 .about-btn {
+    width: 50px;
     position: fixed;
     top: 20px;
     left: 20px;
@@ -173,7 +174,7 @@ body::-webkit-scrollbar-thumb {
     .article-content {
       word-wrap: break-word;
       width: 300px;
-      margin: 3050px 5px 10px auto;
+      margin: 50px 5px 10px auto;
       padding: 50px;
     }
 
