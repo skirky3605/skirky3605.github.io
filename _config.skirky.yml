@@ -1,0 +1,4 @@
+# Sidebar Avatar
+avatar:
+  # Replace the default image and set the url here.
+  url: /images/head.png
