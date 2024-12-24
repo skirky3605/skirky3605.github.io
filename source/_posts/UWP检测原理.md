@@ -103,9 +103,16 @@ private BitmapSource GetWindowIcon(IntPtr hwnd)
 
 这大概就是Windows内部处理UWP的机制(个人推测),不论真实情况是怎样的,这个特性确实对我的代码造成了极大的困扰,我无法得知真正的正在运行的UWP程序的列表,于是我开始尝试更改获取程序列表的方式,最终,我找到了最终解决方案————正如前文给出的代码,使用"user32.dll"中的"EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam)",我成功获取了包括正在运行的UWP程序的列表,这时,我又有了新的发现,使用这个API获取到前文提到的"ApplicationFrameHost接管的UWP"不再是一个名为ApplicationFrameHost的进程,而是标题为此UWP程序标题的类型为"ApplicationFrameWindow"的进程,那么检测方法就不再是检测"Windows.UI.Core.CoreWindow",前文的方法也是<font color="red">不完全正确</font>的,只适用于处在启动阶段的UWP程序,所以正确的检测方法应该是检测类名是"ApplicationFrameWindow"或"Windows.UI.Core.CoreWindow"二者其一即可
 
-———— The End ————
+<p style="text-align: center;">
+  ———— The End ————
+</p>
 
-<a class="random-link" href="https://wwra.lanzouj.com/b032oceef" target="_blank" rel="noopener">相关文件下载,密码skirky</a>
+<p style="text-align: center;">
+  <a class="random-link" href="https://wwra.lanzouj.com/b032oceef" target="_blank"
+    rel="noopener noreferrer">相关文件下载,密码skirky</a>
+</p>
 
-版权所有 © skirky  
-转载需注明来源
+<p style="text-align: center;">
+  版权所有 © skirky<br>
+  转载需注明来源
+</p>

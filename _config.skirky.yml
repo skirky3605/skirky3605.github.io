@@ -2,3 +2,12 @@
 avatar:
   # Replace the default image and set the url here.
   url: /images/head.png
+  
+favicon:
+  medium: /images/head.png
+  apple_touch_icon: /images/head.png
+
+footer:
+  # Specify the year when the site was setup. If not defined, current year will be used.
+  since: 2023
+  github: https://https://github.com/skirky3605
