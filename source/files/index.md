@@ -2,23 +2,21 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
-  * {
+  .post-body * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  body {
+  .post-body p {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #050801;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
   }
 
-  a {
+  .post-body a {
     position: relative;
     display: inline-block;
     padding: 25px 30px;
@@ -33,7 +31,7 @@
 
   }
 
-  a:hover {
+  .post-body a:hover {
     background: #03e9f4;
     color: #050801;
     box-shadow: 0 0 5px #03e9f4,
@@ -43,20 +41,20 @@
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
   }
 
-  a:nth-child(1) {
+  .post-body a:nth-child(1) {
     filter: hue-rotate(270deg);
   }
 
-  a:nth-child(2) {
+  .post-body a:nth-child(2) {
     filter: hue-rotate(110deg);
   }
 
-  a span {
+  .post-body a span {
     position: absolute;
     display: block;
   }
 
-  a span:nth-child(1) {
+  .post-body a span:nth-child(1) {
     top: 0;
     left: 0;
     width: 100%;
@@ -76,7 +74,7 @@
     }
   }
 
-  a span:nth-child(2) {
+  .post-body a span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
@@ -97,7 +95,7 @@
     }
   }
 
-  a span:nth-child(3) {
+  .post-body a span:nth-child(3) {
     bottom: 0;
     right: 0;
     width: 100%;
@@ -119,7 +117,7 @@
   }
 
 
-  a span:nth-child(4) {
+  .post-body a span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;

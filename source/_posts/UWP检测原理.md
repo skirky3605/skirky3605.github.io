@@ -1,6 +1,8 @@
 ---
 title: UWP检测原理
 date: 2023-07-31 21:30:03
+tags: [开发, UWP, Win32]
+categories: 开发
 ---
 想要判断一个正在运行的程序是否是UWP程序并不难。
 
@@ -24,7 +26,7 @@ private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam
 private static extern bool IsWindowVisible(IntPtr hwnd);
 ```
 
-然后只需要调用即可
+然后只需要调用即可<!--more-->
 
 ```cs
 private List<IntPtr> GetOpenWindowHandles()

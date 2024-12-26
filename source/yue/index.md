@@ -2,36 +2,26 @@
 title: 余额计算器
 description: 在线计算余额
 ---
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-
-  .container {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-
-  label,
-  input,
-  button,
-  .result {
-    display: block;
-    margin: 10px 0;
-  }
-
-  input,
-  button {
-    padding: 10px;
-    font-size: 1rem;
-  }
-</style>
-
 <label for="hexInput">输入16进制字符串:</label>
 <input type="text" id="hexInput" placeholder="至少输入16位16进制字符串" />
 <button onclick="calculateBalance()">计算余额</button>
 <span class="result" id="result"></span>
+
+<style>
+  .post-body label,
+  .post-body input,
+  .post-body button,
+  .post-body .result {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .post-body input,
+  .post-body button {
+    padding: 10px;
+    font-size: 1rem;
+  }
+</style>
 
 <script>
   function calculateBalance() {

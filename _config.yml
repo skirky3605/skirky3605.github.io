@@ -100,4 +100,44 @@ theme: skirky
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  - type: indexnow_url_submitter
+  #- type: indexnow_url_submitter
+
+# API Generator
+restful_xapi:
+  site: [
+      'title',
+      'subtitle',
+      'description',
+      'author',
+      'language',
+      'timezone',
+      'url',
+      'keywords',
+      'favicon',
+      'social',
+      'reward',
+      'follow_me'
+    ]
+  categories:
+    category_generator:
+      per_page: 0
+  tags:
+    tag_generator:
+      per_page: 0
+  posts:
+    archive_generator:
+      per_page: 0
+  openapi:
+    info:
+      contact:
+        url: https://github.com/skirky3605
+      license:
+        name: 'Apache 2.0'
+      version: '0.0.1'
+
+# Babel
+babel:
+  options:
+    presets:
+    - - '@babel/preset-env'
+      - targets: IE >= 9
