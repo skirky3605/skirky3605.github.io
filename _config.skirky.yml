@@ -11,3 +11,13 @@ footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
   since: 2023
   github: https://https://github.com/skirky3605
+
+giscus:
+  enable: true
+  repo: skirky3605/skirky3605.github.io
+  category: Announcements
+  mapping: og:title # pathname | url | title | og:title
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
