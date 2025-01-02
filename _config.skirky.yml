@@ -4,8 +4,7 @@ avatar:
   url: /images/head.png
   
 favicon:
-  medium: /images/head.png
-  apple_touch_icon: /images/head.png
+  medium: /images/favicon.ico
 
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
