@@ -20,3 +20,68 @@ giscus:
   reactions_enabled: 1
   emit_metadata: 0
   input_position: bottom
+
+webmanifest:
+  enable: true
+  lang: zh-CN
+  name: skirky的博客
+  short_name: skirky
+  description: 一个不愿意妥协，一事无成的程序员
+  categories: [blogs, news, tools]
+  id: ./
+  start_url: ./
+  display: standalone
+  orientation: any
+  background_color: '#F3F3F3'
+  theme_color: '#F3F3F3'
+  display_override: [window-controls-overlay]
+  shortcuts:
+    - name: 首页
+      url: ./
+      icons:
+        - src: >-
+            https://github.com/user-attachments/assets/82d0bd87-3548-4b3a-a05d-1a02ba2f7766
+          sizes: any
+          type: image/svg+xml
+        - src: >-
+            https://github.com/user-attachments/assets/cd6ae091-7016-4d32-994c-0e819f8abc9d
+          sizes: 96x96
+          type: image/png
+    - name: 标签
+      url: ./tags
+      icons:
+        - src: >-
+            https://github.com/user-attachments/assets/3beeceb2-8422-491d-bbbf-a1aa489f2a92
+          sizes: any
+          type: image/svg+xml
+        - src: >-
+            https://github.com/user-attachments/assets/5ef886eb-54b9-4d59-975c-13c051131772
+          sizes: 96x96
+          type: image/png
+    - name: 分类
+      url: ./categories
+      icons:
+        - src: >-
+            https://github.com/user-attachments/assets/eaf31404-f274-487a-802c-6855d444a90e
+          sizes: any
+          type: image/svg+xml
+        - src: >-
+            https://github.com/user-attachments/assets/3ceee83b-b775-4415-b9b2-2c3965b290d4
+          sizes: 96x96
+          type: image/png
+    - name: 归档
+      url: ./archives
+      icons:
+        - src: >-
+            https://github.com/user-attachments/assets/9e5b9545-72b5-4a1f-983e-d872cf80214b
+          sizes: any
+          type: image/svg+xml
+        - src: >-
+            https://github.com/user-attachments/assets/a7316c02-6cd7-45fc-b571-f68d630f813a
+          sizes: 96x96
+          type: image/png
+  icons:
+    - src: >-
+        ./images/favicon.ico
+      sizes: 32x32
+      type: image/x-icon
