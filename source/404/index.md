@@ -1,7 +1,6 @@
 ---
 title: 404 找不到页面
 description: 这是一个不存在的页面
-comments: false
 sitemap: false
 permalink: /404.html
 ---

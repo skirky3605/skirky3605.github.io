@@ -104,20 +104,16 @@ deploy:
 
 # API Generator
 restful_xapi:
-  site: [
-      'title',
-      'subtitle',
-      'description',
-      'author',
-      'language',
-      'timezone',
-      'url',
-      'keywords',
-      'favicon',
-      'social',
-      'reward',
-      'follow_me'
-    ]
+  site:
+    - 'title'
+    - 'subtitle'
+    - 'description'
+    - 'author'
+    - 'language'
+    - 'timezone'
+    - 'url'
+    - 'keywords'
+    - 'favicon'
   categories:
     category_generator:
       per_page: 0
@@ -139,5 +135,5 @@ restful_xapi:
 babel:
   options:
     presets:
-    - - '@babel/preset-env'
-      - targets: IE >= 9
+      - - '@babel/preset-env'
+        - targets: IE >= 9
