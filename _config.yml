@@ -130,10 +130,3 @@ restful_xapi:
       license:
         name: 'Apache 2.0'
       version: '0.0.1'
-
-# Babel
-babel:
-  options:
-    presets:
-      - - '@babel/preset-env'
-        - targets: IE >= 9

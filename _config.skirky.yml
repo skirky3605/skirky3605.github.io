@@ -85,3 +85,12 @@ webmanifest:
         ./images/favicon.ico
       sizes: 32x32
       type: image/x-icon
+
+babel:
+  options:
+    presets:
+      - - '@babel/preset-env'
+      - - '@babel/preset-typescript'
+    sourceType: unambiguous
+    targets:
+      ie: '9'
