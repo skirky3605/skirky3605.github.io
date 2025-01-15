@@ -33,9 +33,6 @@ description: 各种各样的实用小工具
       <template #description>
         这是一个设置按钮
       </template>
-      <template #action-icon>
-        <svg-host src="https://cdn.jsdelivr.net/npm/@fluentui/svg-icons/icons/chevron_right_12_regular.svg"></svg-host>
-      </template>
     </settings-button>
   </settings-group>
 </div>
@@ -47,19 +44,19 @@ description: 各种各样的实用小工具
 <template id="settings-presenter-template">
   <div class="settings-presenter">
     <div class="header-root">
-      <div class="icon-holder" v-check-solt="getSlot('icon')">
+      <div class="icon-holder" v-check-solt="$slots.icon">
         <slot name="icon"></slot>
       </div>
       <div class="header-panel">
-        <span v-check-solt="getSlot('header')">
+        <span v-check-solt="$slots.header">
           <slot name="header"></slot>
         </span>
-        <span class="description" v-check-solt="getSlot('description')">
+        <span class="description" v-check-solt="$slots.description">
           <slot name="description"></slot>
         </span>
       </div>
     </div>
-    <div class="content-presenter" v-check-solt="getSlot('default')">
+    <div class="content-presenter" v-check-solt="$slots.default">
       <slot></slot>
     </div>
   </div>
@@ -99,8 +96,11 @@ description: 各种各样的实用小工具
         </template>
         <slot></slot>
       </settings-presenter>
-      <div class="action-icon-holder" v-check-solt="getSlot('action-icon')">
-        <slot name="action-icon"></slot>
+      <div class="action-icon-holder">
+        <slot name="action-icon">
+          <svg-host
+            src="https://cdn.jsdelivr.net/npm/@fluentui/svg-icons/icons/chevron_right_12_regular.svg"></svg-host>
+        </slot>
       </div>
     </div>
   </a>
@@ -108,10 +108,10 @@ description: 各种各样的实用小工具
 
 <template id="settings-group-template">
   <div class="settings-group">
-    <div class="header-presenter" v-check-solt="getSlot('header')">
+    <div class="header-presenter" v-check-solt="$slots.header">
       <slot name="header"></slot>
     </div>
-    <div class="items-presenter" v-check-solt="getSlot('default')">
+    <div class="items-presenter" v-check-solt="$slots.default">
       <slot></slot>
     </div>
   </div>
@@ -146,7 +146,7 @@ description: 各种各样的实用小工具
                 if (typeof value.type === "symbol") {
                   value = value.children;
                   if (value instanceof Array) {
-                    setDisplay(value.length > 0);
+                    setDisplay(value.length);
                     return;
                   }
                 }
@@ -196,28 +196,18 @@ description: 各种各样的实用小工具
       this.getSVGAsync(this.src).then(svg => this.innerHTML = svg);
     }
   }).component("settings-presenter", {
-    template: "#settings-presenter-template",
-    methods: {
-      getSlot(name) {
-        return this.$slots[name];
-      }
-    }
+    template: "#settings-presenter-template"
   }).component("settings-card", {
     template: "#settings-card-template"
   }).component("settings-button", {
     template: "#settings-button-template",
-    methods: {
-      getSlot(name) {
-        return this.$slots[name];
+    mounted() {
+      if (typeof pjax !== "undefined") {
+        pjax.attachLink(this.$refs.anchor);
       }
     }
   }).component("settings-group", {
-    template: "#settings-group-template",
-    methods: {
-      getSlot(name) {
-        return this.$slots[name];
-      }
-    }
+    template: "#settings-group-template"
   }).mount("#vue-app");
 </script>
 
