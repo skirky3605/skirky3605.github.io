@@ -212,7 +212,7 @@ description: 各种各样的实用小工具
 </script>
 
 <style>
-  #vue-app * {
+  #vue-app {
     --settings-card-padding: 16px;
   }
 
@@ -246,16 +246,13 @@ description: 各种各样的实用小工具
   }
 
   .settings-presenter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .settings-presenter * {
     --settings-card-description-font-size: var(--caption-text-block-font-size);
     --settings-card-header-icon-max-size: 20px;
     --settings-card-header-icon-margin: 0 20px 0 2px;
     --settings-card-vertical-header-content-spacing: 8px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .settings-presenter div.header-root {
@@ -321,6 +318,7 @@ description: 各种各样的实用小工具
   }
 
   .settings-button {
+    --settings-button-padding: 16px 0 16px 16px;
     cursor: pointer;
     display: block;
     box-sizing: border-box;
@@ -339,10 +337,6 @@ description: 各种各样的实用小工具
   .settings-button:active {
     background: var(--control-fill-color-tertiary);
     color: var(--text-fill-color-secondary);
-  }
-
-  .settings-button * {
-    --settings-button-padding: 16px 0 16px 16px;
   }
 
   .settings-button .presenter {
@@ -366,7 +360,7 @@ description: 各种各样的实用小工具
     fill: currentColor;
   }
 
-  .settings-group * {
+  .settings-group {
     --body-strong-text-block-font-size: var(--body-text-block-font-size);
   }
 
