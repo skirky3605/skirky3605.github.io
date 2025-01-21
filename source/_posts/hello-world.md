@@ -1,6 +1,7 @@
 ---
 title: Hello World
 date: 2024-12-23 10:15:00
+lang: en-US
 tags: [开发]
 categories: 开发
 sitemap: false
