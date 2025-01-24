@@ -24,7 +24,7 @@
     "hexo-renderer-marked": "^7.0.0",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-skirky": "file:../../hexo-theme-skirky"
+    "hexo-theme-skirky": "github:skirky3605/hexo-theme-skirky"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.0.0",

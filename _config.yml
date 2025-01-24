@@ -123,6 +123,8 @@ restful_xapi:
   posts:
     archive_generator:
       per_page: 0
+  search_all:
+    enable: false
   openapi:
     info:
       contact:
