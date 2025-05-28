@@ -15,7 +15,7 @@ categories: 教程
 
 重启进BIOS，切换SATA模式，一气呵成，不料Windows在此留了一手
 
-![PIN不可用](error.png)
+![PIN不可用](error.png)<!--more-->
 
 本来这个看起来也没啥意外的，安全模式少点东西没法加载PIN也合理，但是仔细一想，不对，这个在线账户的重设PIN，它点不动啊！！！
 
@@ -26,7 +26,7 @@ categories: 教程
 
 ![改密码报错](failed_to_change_passwd.png)
 
-又是一番网上冲浪，总算找到了一个比较曲线救国的办法，简而言之就是把辅助功能的某个东西(如屏幕键盘osk.exe)替换为cmd，然后登录到Administrator，进而关闭安全模式<!--more-->
+又是一番网上冲浪，总算找到了一个比较曲线救国的办法，简而言之就是把辅助功能的某个东西(如屏幕键盘osk.exe)替换为cmd，然后登录到Administrator，进而关闭安全模式
 上手实操一下，第一步是进入疑惑解答的cmd，把osk.exe偷天换日为cmd.exe
 
 替换之前先用diskpart查询盘符
