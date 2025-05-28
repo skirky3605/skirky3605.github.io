@@ -9,7 +9,7 @@ favicon:
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
   since: 2023
-  github: https://https://github.com/skirky3605
+  github: https://github.com/skirky3605
 
 giscus:
   enable: true
