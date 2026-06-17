@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.0.0",
-    "@babel/preset-typescript": "^7.0.0"
+    "@babel/preset-typescript": "^8.0.0"
   }
 }
