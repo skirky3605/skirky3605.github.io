@@ -27,7 +27,7 @@
     "hexo-theme-skirky": "github:skirky3605/hexo-theme-skirky"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^8.0.2",
     "@babel/preset-typescript": "^7.0.0"
   }
 }
